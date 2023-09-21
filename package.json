@@ -1,0 +1,32 @@
+{
+  "name": "almuftah-backend",
+  "version": "1.0.0",
+  "description": "backend using nodeJS Created and Developed by Mannmohan",
+  "main": "src/config/server.js",
+  "scripts": {
+    "start": "nodemon src/config/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MannmohanOfficial/Almuftah-Backend.git"
+  },
+  "author": "Mannmohan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MannmohanOfficial/Almuftah-Backend/issues"
+  },
+  "homepage": "https://github.com/MannmohanOfficial/Almuftah-Backend#readme",
+  "devDependencies": {
+    "moment": "^2.29.4",
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.1",
+    "morgan": "^1.10.0",
+    "otp-generator": "^4.0.1",
+    "pg": "^8.11.1"
+  }
+}
