@@ -8,6 +8,23 @@ const moment = require("moment");
 const currentDate = new Date().toISOString();
 const fDate = moment(currentDate);
 const formattedDate = fDate.format("YYYY-MM-DD HH:mm:ssZ");
+// Get all Categories
+const getUserTypes = (req, res, next) => {
+  dbClient.query("SELECT * FROM user_types", (err, response) => {
+    if (err) {
+      res.status(400).json({
+        message: `Error: ${err.message}`,
+        status: 0,
+      });
+    }
+    console.log(formattedDate);
+    res.status(200).json({
+      message: "Success",
+      status: 1,
+      data: response.rows,
+    });
+  });
+};
 
 // Get all Categories
 const getCategories = (req, res, next) => {
@@ -681,4 +698,5 @@ module.exports = {
   sendChat,
   getChat,
   getProfileDetails,
+  getUserTypes
 };

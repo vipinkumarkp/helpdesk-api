@@ -145,6 +145,63 @@ const createStaff = (req, res, next) => {
     }
 }
 
+
+const updateUser = (req, res, next) => {
+    var _emp_name = req.body.emp_name,
+        _emp_email = req.body.emp_email,
+        _emp_id = req.body.emp_id,
+        _emp_pass = req.body.emp_pass,
+        _emp_type = req.body.emp_type,
+        _emp_phone = req.body.emp_phone,
+        _emp_doj = req.body.doj,
+        emp_id,
+        user_status = 0,
+        login_status = 0,
+        verify_status = 0;
+    try {
+        switch (_emp_id.length) {
+            case 1:
+                emp_id = `EMP000${_emp_id}`
+                break;
+            case 2:
+                emp_id = `EMP00${_emp_id}`
+                break;  
+            case 3:
+                emp_id = `EMP0${_emp_id}`
+                break;      
+            case 4:
+                emp_id = `EMP${_emp_id}`
+                break;
+            default:
+                break;
+        }
+
+        _dbClient.query(
+            `INSERT INTO users (name, email, emp_id, password, user_type, user_status, verify_status, login_status, phone, doj)
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);`, 
+            [_emp_name, _emp_email, emp_id, _emp_pass, _emp_type, user_status, verify_status, login_status, _emp_phone, _emp_doj],
+            (err, resp) => {
+                if (err) {
+                    res.status(400).json({
+                        message: "Something went wrong!",
+                        error: err.message
+                    })
+                }
+                res.status(200).json({
+                    message: "Success",
+                    data: "User Status updated successfully!"
+                })
+
+                
+            }
+        )
+    } catch (error) {
+        res.status(400).json({
+            error
+        })
+    }
+}
+
 module.exports = {
     getMembers,
     getAdmins,

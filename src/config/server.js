@@ -45,6 +45,5 @@ app.use('/api/v1/customers', customerRouter),
 app.use('/api/v1/technicians', technicianRouter)
 
 
-
 // Back-end server connection
 app.listen(port, () => console.log(`Server connection established and running on port: ${port}`))

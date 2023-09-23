@@ -12,5 +12,6 @@ router.post('/createTicket', userController.createTicket)
 router.post('/chat_with', userController.sendChat)
 router.get('/getChat/:ticket_id', userController.getChat)
 router.get('/getProfile/:id', userController.getProfileDetails)
+router.get('/get_user_types', userController.getUserTypes)
 
 module.exports = router
